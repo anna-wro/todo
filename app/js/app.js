@@ -8,13 +8,14 @@ const todoList = document.getElementById('js-incomplete-tasks');
 const todoHeader = document.getElementById('js-todo');
 const doneList = document.getElementById('js-completed-tasks');
 const doneHeader = document.getElementById('js-completed');
+const body = document.body;
 
+// Adding new task
 const addTask = () => {
   let taskName = taskInput.value;
   if (taskName !== '' && taskName !== ' ') {
     let newTask = createNewTask(taskName);
     todoList.appendChild(newTask);
-    // bindTaskEvents(listItem, taskCompleted);
     todoList.classList.toggle('show');
     taskInput.value = '';
   }
@@ -32,21 +33,75 @@ const createNewTask = (taskTitle) => {
   checkBox.type = 'checkbox';
   editInput.type = 'text';
   label.textContent = taskTitle;
+  label.className = "task__title";
   listItem.appendChild(checkBox);
   listItem.appendChild(label);
   listItem.appendChild(editInput);
-  iconDelete.className = 'material-icons';
+  iconDelete.className = 'material-icons icon__delete';
   iconDelete.innerText = 'delete';
   deleteButton.className = 'task__delete';
   deleteButton.appendChild(iconDelete);
   listItem.appendChild(deleteButton);
-  iconEdit.className = 'material-icons';
+  iconEdit.className = 'material-icons icon__edit';
   iconEdit.innerText = 'mode_edit';
   editButton.className = 'task__edit';
   editButton.appendChild(iconEdit);
   listItem.appendChild(editButton);
   return listItem;
 };
+
+const moveToOtherList = () => {
+
+};
+
+const confirmDialogue = function (buttonClicked) {
+  let listItem = buttonClicked.parentNode;
+  let ul = listItem.parentNode;
+  let noButton = document.createElement('button');
+  let yesButton = document.createElement('button');
+  let divContainer = document.createElement('div');
+  let alertContainer = document.createElement('div');
+  alertContainer.className = 'alert';
+  noButton.textContent = 'No';
+  noButton.setAttribute('class', 'noButton');
+  yesButton.setAttribute('class', 'yesButton');
+  yesButton.textContent = 'Yes';
+  alertContainer.innerHTML = '<p>Delete this item?</p>';
+  alertContainer.appendChild(noButton);
+  alertContainer.appendChild(yesButton);
+  divContainer.setAttribute('id', 'overlay');
+  divContainer.appendChild(alertContainer);
+  body.appendChild(divContainer);
+
+  yesButton.addEventListener('click', function () {
+    deleteTask(ul, listItem, divContainer);
+  });
+
+  noButton.addEventListener('click', function () {
+    body.removeChild(divContainer);
+  });
+};
+
+const deleteTask = function (ul, listItem, divContainer,) {
+  ul.removeChild(listItem);
+  body.removeChild(divContainer);
+};
+
+// Add event listeners to edit/delete buttons
+
+const whatToDo = (e) => {
+  if (e.target.classList.contains('icon__edit') || e.target.classList.contains('task__title')) {
+    editTask();
+  } else if (e.target.classList.contains('icon__delete')) {
+    let buttonClicked = e.target.parentNode;
+    confirmDialogue(buttonClicked);
+  } else if(e.target.type === "checkbox"){
+    moveToOtherList();
+  }
+};
+
+todoList.addEventListener('click', whatToDo);
+doneList.addEventListener('click', whatToDo);
 
 // Accordion
 todoHeader.addEventListener('click', () => {
@@ -82,18 +137,15 @@ labelAdd.addEventListener('click', () => {
   taskInput.classList.toggle('hide');
 });
 
+// New task - listeners
+taskInput.addEventListener('keydown', function (e) {
+  if (e.which === 13) //enter
+  {
+    addTask();
+  }
+});
 buttonAdd.addEventListener('click', addTask);
 
-
-//
-// var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
-//   let checkBox = taskListItem.querySelector('input[type=checkbox]');
-//   let editButton = taskListItem.querySelector('button.edit');
-//   let deleteButton = taskListItem.querySelector('button.delete');
-//   editButton.onclick = editTask;
-//   deleteButton.onclick = confirmDialogue;
-//   checkBox.onchange = checkBoxEventHandler;
-// };
 
 // Local storage
 // var incomplete = $('#incomplete-tasks');
@@ -116,14 +168,6 @@ buttonAdd.addEventListener('click', addTask);
 //
 // var taskInput = document.getElementById('new-task');
 // var addButton = document.getElementById('js-add');
-
-// // Adding new tasks
-// taskInput.addEventListener('keydown', function (event) {
-//   if (event.which === 13) //enter
-//   {
-//     addTask();
-//   }
-// });
 
 // var editTask = function () {
 //   console.log('Task edited');
@@ -155,41 +199,7 @@ buttonAdd.addEventListener('click', addTask);
 //   listItem.classList.toggle('editMode');
 // };
 //
-// var confirmDialogue = function () {
-//   var listItem = this.parentNode;
-//   var ul = listItem.parentNode;
-//   var body = document.body;
-//   var noButton = document.createElement('button');
-//   var yesButton = document.createElement('button');
-//   var divContainer = document.createElement('div');
-//   var alertContainer = document.createElement('div');
-//   alertContainer.className = 'alert';
-//   noButton.innerText = 'No';
-//   noButton.setAttribute('class', 'noButton');
-//   yesButton.setAttribute('class', 'yesButton');
-//   yesButton.innerText = 'Yes';
-//   alertContainer.innerHTML = '<p>Delete this item?</p>';
-//   alertContainer.appendChild(noButton);
-//   alertContainer.appendChild(yesButton);
-//   divContainer.setAttribute('id', 'overlay');
-//   divContainer.appendChild(alertContainer);
-//   body.appendChild(divContainer);
-//
-//   yesButton.addEventListener('click', function () {
-//     deleteTask(ul, listItem, divContainer, body);
-//   });
-//
-//   noButton.addEventListener('click', function () {
-//     body.removeChild(divContainer);
-//     return;
-//   });
-// };
-//
-// var deleteTask = function (ul, listItem, divContainer, body) {
-//   console.log('Task deleted');
-//   ul.removeChild(listItem);
-//   body.removeChild(divContainer);
-// };
+
 // var taskCompleted = function () {
 //   var listItem = this.parentNode;
 //   completedTasksHolder.appendChild(listItem);
