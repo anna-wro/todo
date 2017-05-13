@@ -11,6 +11,7 @@ const doneHeader = document.getElementById('js-completed');
 const body = document.body;
 const uncheckedTasks = todoList.querySelectorAll('input[type=checkbox]');
 const checkedTasks = doneList.querySelectorAll('input[type=checkbox]');
+const saveButton = document.getElementById("js-save");
 
 // Checkboxes always checked/unchecked depending on the list
 for(let i = 0; i < checkedTasks.length; i++) {
@@ -199,21 +200,16 @@ taskInput.addEventListener('keydown', function (e) {
 buttonAdd.addEventListener('click', addTask);
 
 // Local storage
-// var incomplete = $('#incomplete-tasks');
-// $('#js-save').click(function () {
-//   var editedContent = incomplete.html();
-//   localStorage.incompleteContent = editedContent;
-// });
-// var completed = $('#completed-tasks');
-// $('#js-save').click(function () {
-//   var editedContent2 = completed.html();
-//   localStorage.completedContent = editedContent2;
-// });
-// if (localStorage.getItem('incompleteContent')) {
-//   incomplete.html(localStorage.getItem('incompleteContent'));
-// }
-//
-// if (localStorage.getItem('completedContent')) {
-//   completed.html(localStorage.getItem('completedContent'));
-// }
-//
+saveButton.addEventListener('click', () => {
+    localStorage.incompleteContent = todoList.innerHTML;
+    localStorage.completedContent = doneList.innerHTML;
+});
+
+if (localStorage.getItem('incompleteContent')) {
+  todoList.innerHTML = localStorage.getItem('incompleteContent');
+}
+
+if (localStorage.getItem('completedContent')) {
+  doneList.innerHTML = localStorage.getItem('completedContent');
+}
+
