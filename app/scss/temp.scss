@@ -1,0 +1,273 @@
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+
+body {
+  background: #2CC990;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #2CC990, #1abc9c);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(right, #2CC990, #1abc9c);
+  background: linear-gradient(to left, #2CC990, #1abc9c);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: Lato, sans-serif;
+}
+
+.container {
+  display: block;
+  width: 400px;
+  margin: 50px auto 0;
+  padding: 5px 40px 60px 40px;
+  background-color: #FEFEFE;
+  border-radius: 5px;
+  box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li * {
+  float: left;
+}
+
+li,
+h3 {
+  clear: both;
+  list-style: none;
+}
+
+input,
+button {
+  outline: none;
+}
+
+button {
+  background: none;
+  border: 0px;
+  color: #888;
+  float: right;
+  width: 25px;
+  margin: 7px 0px 0px 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #333;
+}
+
+.save {
+  width: auto;
+  font-size: 16px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #FEFEFE;
+  position: relative;
+  top: -12px;
+  padding: 12px;
+  border-radius: 0 0 5px 5px;
+  background-color: #e53935;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.5);
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+#save:hover,
+#save:focus,
+#save:active {
+  background-color: #9C27B0;
+  color: white;
+}
+
+.material-icons {
+  font-size: 22px;
+}
+
+.expand {
+  position: relative;
+  left: 305px;
+  top: 8px;
+}
+
+#completed .expand {
+  left: 286px;
+}
+
+#todo .expand {
+  left: 327px;
+}
+
+
+/* Heading */
+
+h3,
+label[for='new-task'] {
+  color: #333;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 2px solid #333;
+  padding: 30px 0 10px;
+  margin: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  margin: 0;
+  font-size: 16px;
+  line-height: 16px;
+  height: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  font-family: Lato, sans-serif;
+  color: #888;
+}
+
+input[type="text"]:focus {
+  color: #333;
+}
+
+input[type="text"]:focus {
+  color: #333;
+}
+
+
+/* New Task */
+
+label[for='new-task'] {
+  display: block;
+  margin: 0 0 20px;
+}
+
+input#new-task {
+  float: left;
+  width: 345px;
+}
+
+#new-task {
+  margin-bottom: 10px;
+}
+
+input:focus {
+  border-color: #BDBDBD;
+}
+
+p> button:hover {
+  color: #2CC990;
+}
+
+
+/* Task list */
+
+#todo {
+  padding: 10px 0 10px 0;
+}
+
+li {
+  overflow: hidden;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+li> input[type="checkbox"] {
+  margin: 0 10px;
+  position: relative;
+  top: 15px;
+}
+
+li> label {
+  font-size: 16px;
+  line-height: 16px;
+  width: 290px;
+  padding: 12px 0 10px 11px;
+}
+
+li> input[type="text"] {
+  width: 285px;
+}
+
+li> .delete:hover {
+  color: #e53935;
+}
+
+.hide {
+  display: none;
+}
+
+
+/* Completed */
+
+#completed-tasks label {
+  text-decoration: line-through;
+  color: #888;
+}
+
+
+/* Edit Task */
+
+ul li input[type=text] {
+  display: none;
+}
+
+ul li.editMode input[type=text] {
+  display: block;
+}
+
+ul li.editMode label {
+  display: none;
+  margin-top: 1px;
+  margin-bottom: 4px;
+  padding: 8px 0 9px 11px;
+}
+
+
+/* Confirm Dialogue */
+
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, .4);
+}
+
+.alert {
+  margin: 200px auto;
+  padding: 10px;
+  text-align: center;
+  width: 250px;
+  height: 100px;
+  background: #FEFEFE;
+  border-radius: 5px;
+  border: 3px solid #e53935;
+}
+
+.alert button {
+  height: 25px;
+  width: 50px;
+  border-radius: 3px;
+}
+
+.yesButton:hover {
+  color: #FEFEFE;
+  background-color: #e53935;
+}
+
+.noButton {
+  margin-left: 10px;
+  margin-right: 70px;
+}
+
+.noButton:hover {
+  color: #FEFEFE;
+  background-color: #2CC990;
+}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Anna Wróbel">
@@ -10,72 +9,56 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Material+Icons" rel="stylesheet"
           type="text/css">
     <!--build:css css/app.min.css-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/application.css">
     <!--endbuild-->
 </head>
 <body>
 <div class="container">
-    <p>
-        <button id="save">Save</button>
-    </p>
-    <p>
+        <button id="js-save" class="save">Save</button>
+    <div class="container__add">
         <label for="new-task">Add Item<i class="material-icons expand">expand_less</i></label>
         <input id="new-task" type="text">
-        <button id="add"><i class="material-icons">add_circle</i></button>
-    </p>
+        <button id="js-add"><i class="material-icons">add_circle</i></button>
+    </div>
     <h3 id="todo">To-do<i class="material-icons expand">expand_less</i></h3>
     <ul id="incomplete-tasks">
-        <li>
-            <input type="checkbox">
-            <label>Enjoy!</label>
-            <input type="text">
-            <button class="delete"><i class="material-icons">delete</i></button>
-            <button class="edit"><i class="material-icons">mode_edit</i></button>
+        <li class="task">
+            <input type="checkbox" class="task__checkbox" checked>
+            <label class="task__title">Enjoy!</label>
+            <input type="text" class="task__input">
+            <button class="delete task__delete"><i class="material-icons">delete</i></button>
+            <button class="edit task__edit"><i class="material-icons">mode_edit</i></button>
         </li>
     </ul>
     <h3 id="completed">Completed<i class="material-icons expand">expand_less</i></h3>
     <ul id="completed-tasks">
-        <li>
-            <input type="checkbox" checked>
-            <label>Local storage</label>
-            <input type="text">
-            <button class="delete"><i class="material-icons">delete</i></button>
-            <button class="edit"><i class="material-icons">mode_edit</i></button>
+        <li class="task">
+            <input type="checkbox" class="task__checkbox" checked>
+            <label class="task__title">Local storage</label>
+            <input type="text" class="task__input">
+            <button class="delete task__delete"><i class="material-icons">delete</i></button>
+            <button class="edit task__edit"><i class="material-icons">mode_edit</i></button>
         </li>
-        <li>
-            <input type="checkbox" checked>
-            <label>Accordion</label>
-            <input type="text">
-            <button class="delete"><i class="material-icons">delete</i></button>
-            <button class="edit"><i class="material-icons">mode_edit</i></button>
+        <li class="task">
+            <input type="checkbox" class="task__checkbox" checked>
+            <label class="task__title">Adding new tasks</label>
+            <input type="text" class="task__input">
+            <button class="delete task__delete"><i class="material-icons">delete</i></button>
+            <button class="edit task__edit"><i class="material-icons">mode_edit</i></button>
         </li>
-        <li>
-            <input type="checkbox" checked>
-            <label>Empty tasks</label>
-            <input type="text">
-            <button class="delete"><i class="material-icons">delete</i></button>
-            <button class="edit"><i class="material-icons">mode_edit</i></button>
+        <li class="task">
+            <input type="checkbox" class="task__checkbox" checked>
+            <label class="task__title">Editing tasks</label>
+            <input type="text" class="task__input">
+            <button class="delete task__delete"><i class="material-icons">delete</i></button>
+            <button class="edit task__edit"><i class="material-icons">mode_edit</i></button>
         </li>
-        <li>
-            <input type="checkbox" checked>
-            <label>Adding new tasks</label>
-            <input type="text">
-            <button class="delete"><i class="material-icons">delete</i></button>
-            <button class="edit"><i class="material-icons">mode_edit</i></button>
-        </li>
-        <li>
-            <input type="checkbox" checked>
-            <label>Editing tasks</label>
-            <input type="text">
-            <button class="delete"><i class="material-icons">delete</i></button>
-            <button class="edit"><i class="material-icons">mode_edit</i></button>
-        </li>
-        <li>
-            <input type="checkbox" checked>
-            <label>Deleting tasks</label>
-            <input type="text">
-            <button class="delete"><i class="material-icons">delete</i></button>
-            <button class="edit"><i class="material-icons">mode_edit</i></button>
+        <li class="task">
+            <input type="checkbox" class="task__checkbox" checked>
+            <label class="task__title">Deleting tasks</label>
+            <input type="text" class="task__input">
+            <button class="delete task__delete"><i class="material-icons">delete</i></button>
+            <button class="edit task__edit"><i class="material-icons">mode_edit</i></button>
         </li>
     </ul>
 </div>
