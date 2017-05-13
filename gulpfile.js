@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const babel = require('gulp-babel');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
@@ -63,6 +64,9 @@ gulp.task('useref', function() {
     .pipe(useref())
     .pipe(changed('dist'))
     .pipe(gulpIf('*.html', htmlmin({collapseWhitespace: true})))
+    .pipe(gulpIf('*.js', babel({
+      presets: ['env']
+    })))
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
     .pipe(gulp.dest('dist'));
