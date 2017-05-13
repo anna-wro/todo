@@ -1,5 +1,6 @@
 'use strict';
 
+const body = document.body;
 const labelAdd = document.getElementById('js-label-add');
 const taskInput = document.getElementById('js-new-task');
 const buttonAdd = document.getElementById('js-add-button');
@@ -8,9 +9,8 @@ const todoList = document.getElementById('js-incomplete-tasks');
 const todoHeader = document.getElementById('js-todo');
 const doneList = document.getElementById('js-completed-tasks');
 const doneHeader = document.getElementById('js-completed');
-const body = document.body;
-const uncheckedTasks = todoList.querySelectorAll('input[type=checkbox]');
-const checkedTasks = doneList.querySelectorAll('input[type=checkbox]');
+let uncheckedTasks = todoList.querySelectorAll('input[type=checkbox]');
+let checkedTasks = doneList.querySelectorAll('input[type=checkbox]');
 const saveButton = document.getElementById("js-save");
 
 // Checkboxes always checked/unchecked depending on the list
@@ -212,4 +212,3 @@ if (localStorage.getItem('incompleteContent')) {
 if (localStorage.getItem('completedContent')) {
   doneList.innerHTML = localStorage.getItem('completedContent');
 }
-
