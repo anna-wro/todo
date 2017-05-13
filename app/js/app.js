@@ -9,6 +9,16 @@ const todoHeader = document.getElementById('js-todo');
 const doneList = document.getElementById('js-completed-tasks');
 const doneHeader = document.getElementById('js-completed');
 const body = document.body;
+const uncheckedTasks = todoList.querySelectorAll('input[type=checkbox]');
+const checkedTasks = doneList.querySelectorAll('input[type=checkbox]');
+
+// Checkboxes always checked/unchecked depending on the list
+for(let i = 0; i < checkedTasks.length; i++) {
+  checkedTasks[i].checked = true;
+}
+for(let i = 0; i < uncheckedTasks.length; i++) {
+  uncheckedTasks[i].checked = false;
+}
 
 // Adding new task
 const addTask = () => {
@@ -38,20 +48,52 @@ const createNewTask = (taskTitle) => {
   listItem.appendChild(label);
   listItem.appendChild(editInput);
   iconDelete.className = 'material-icons icon__delete';
-  iconDelete.innerText = 'delete';
+  iconDelete.textContent = 'delete';
   deleteButton.className = 'task__delete';
   deleteButton.appendChild(iconDelete);
   listItem.appendChild(deleteButton);
   iconEdit.className = 'material-icons icon__edit';
-  iconEdit.innerText = 'mode_edit';
+  iconEdit.textContent = 'mode_edit';
   editButton.className = 'task__edit';
   editButton.appendChild(iconEdit);
   listItem.appendChild(editButton);
   return listItem;
 };
 
+// Editing task
+const editTask = (taskToEdit) => {
+  let listItem = taskToEdit;
+  let editInput = listItem.querySelector('input[type=text]');
+  let checkBox = listItem.querySelector('input[type=checkbox]');
+  let iconEdit = listItem.getElementsByTagName('i')[1];
+  let label = listItem.querySelector('label');
+  let containsClass = listItem.classList.contains('editMode');
+  if (containsClass) {
+    label.innerText = editInput.value;
+    iconEdit.innerText = 'mode_edit';
+    checkBox.disabled = false;
+  } else {
+    editInput.value = label.innerText;
+    iconEdit.innerText = 'playlist_add_check';
+    checkBox.disabled = true;
+  }
+
+  editInput.addEventListener('keyup', function (e) {
+    if (e.which === 13) //enter
+    {
+      label.innerText = editInput.value;
+      iconEdit.innerText = 'mode_edit';
+      checkBox.disabled = false;
+      listItem.classList.toggle('editMode');
+    }
+  });
+  listItem.classList.toggle('editMode');
+};
+
 const moveToOtherList = (listItem, currentList) => {
-  switch (currentList){
+  let label = listItem.getElementsByTagName('label')[0];
+  label.classList.toggle('task__title--done');
+  switch (currentList) {
     case 'js-incomplete-tasks':
       doneList.appendChild(listItem);
       break;
@@ -95,15 +137,18 @@ const deleteTask = function (ul, listItem, divContainer,) {
 };
 
 // Add event listeners to edit/delete buttons
-
 const whatToDo = (e) => {
-  if (e.target.classList.contains('icon__edit') || e.target.classList.contains('task__title')) {
-    editTask();
-  } else if (e.target.classList.contains('icon__delete')) {
+  let listItem = e.target.parentNode;
+  if (e.target.classList.contains('icon__edit')) {
+    listItem = e.target.parentNode.parentNode;
+    editTask(listItem);
+  } else if (e.target.classList.contains('task__title')) {
+    editTask(listItem);
+  }
+  else if (e.target.classList.contains('icon__delete')) {
     let buttonClicked = e.target.parentNode;
     confirmDialogue(buttonClicked);
   } else if (e.target.type === 'checkbox') {
-    let listItem = e.target.parentNode;
     let currentList = listItem.parentNode.id;
     moveToOtherList(listItem, currentList);
   }
@@ -123,7 +168,6 @@ todoHeader.addEventListener('click', () => {
 
   todoList.classList.toggle('hide');
 });
-
 doneHeader.addEventListener('click', () => {
   let isHidden = doneList.classList.contains('hide');
   if (isHidden) {
@@ -134,7 +178,6 @@ doneHeader.addEventListener('click', () => {
 
   doneList.classList.toggle('hide');
 });
-
 labelAdd.addEventListener('click', () => {
   let isHidden = buttonAdd.classList.contains('hide');
   if (isHidden) {
@@ -174,38 +217,3 @@ buttonAdd.addEventListener('click', addTask);
 //   completed.html(localStorage.getItem('completedContent'));
 // }
 //
-// var taskInput = document.getElementById('new-task');
-// var addButton = document.getElementById('js-add');
-
-// var editTask = function () {
-//   console.log('Task edited');
-//   var listItem = this.parentNode;
-//   var editInput = listItem.querySelector('input[type=text]');
-//   var checkBox = listItem.querySelector('input[type=checkbox]');
-//   var iconEdit = listItem.getElementsByTagName('i')[1];
-//   var label = listItem.querySelector('label');
-//   var containsClass = listItem.classList.contains('editMode');
-//   if (containsClass) {
-//     label.innerText = editInput.value;
-//     iconEdit.innerText = 'mode_edit';
-//     checkBox.disabled = false;
-//   } else {
-//     editInput.value = label.innerText;
-//     iconEdit.innerText = 'playlist_add_check';
-//     checkBox.disabled = true;
-//   }
-//
-//   editInput.addEventListener('keyup', function (event) {
-//     if (event.which === 13) //enter
-//     {
-//       label.innerText = editInput.value;
-//       iconEdit.innerText = 'mode_edit';
-//       checkBox.disabled = false;
-//       listItem.classList.toggle('editMode');
-//     }
-//   });
-//   listItem.classList.toggle('editMode');
-// };
-//
-// $('#completed-tasks :checkbox').attr('checked', true);
-// $('#incomplete-tasks :checkbox').attr('checked', false);
