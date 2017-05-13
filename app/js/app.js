@@ -33,7 +33,7 @@ const createNewTask = (taskTitle) => {
   checkBox.type = 'checkbox';
   editInput.type = 'text';
   label.textContent = taskTitle;
-  label.className = "task__title";
+  label.className = 'task__title';
   listItem.appendChild(checkBox);
   listItem.appendChild(label);
   listItem.appendChild(editInput);
@@ -50,8 +50,15 @@ const createNewTask = (taskTitle) => {
   return listItem;
 };
 
-const moveToOtherList = () => {
-
+const moveToOtherList = (listItem, currentList) => {
+  switch (currentList){
+    case 'js-incomplete-tasks':
+      doneList.appendChild(listItem);
+      break;
+    case 'js-completed-tasks':
+      todoList.appendChild(listItem);
+      break;
+  }
 };
 
 const confirmDialogue = function (buttonClicked) {
@@ -95,8 +102,10 @@ const whatToDo = (e) => {
   } else if (e.target.classList.contains('icon__delete')) {
     let buttonClicked = e.target.parentNode;
     confirmDialogue(buttonClicked);
-  } else if(e.target.type === "checkbox"){
-    moveToOtherList();
+  } else if (e.target.type === 'checkbox') {
+    let listItem = e.target.parentNode;
+    let currentList = listItem.parentNode.id;
+    moveToOtherList(listItem, currentList);
   }
 };
 
@@ -137,7 +146,7 @@ labelAdd.addEventListener('click', () => {
   taskInput.classList.toggle('hide');
 });
 
-// New task - listeners
+// Add new task - listeners
 taskInput.addEventListener('keydown', function (e) {
   if (e.which === 13) //enter
   {
@@ -145,7 +154,6 @@ taskInput.addEventListener('keydown', function (e) {
   }
 });
 buttonAdd.addEventListener('click', addTask);
-
 
 // Local storage
 // var incomplete = $('#incomplete-tasks');
@@ -199,26 +207,5 @@ buttonAdd.addEventListener('click', addTask);
 //   listItem.classList.toggle('editMode');
 // };
 //
-
-// var taskCompleted = function () {
-//   var listItem = this.parentNode;
-//   completedTasksHolder.appendChild(listItem);
-//   bindTaskEvents(listItem, taskIncomplete);
-// };
-// var taskIncomplete = function () {
-//   var listItem = this.parentNode;
-//   incompleteTasksHolder.appendChild(listItem);
-//   bindTaskEvents(listItem, taskIncomplete);
-//   bindTaskEvents(listItem, taskCompleted);
-// };
-//
-// //
-// for (var i = 0; i < incompleteTasksHolder.children.length; i++) {
-//   bindTaskEvents(incompleteTasksHolder.children[i], taskCompleted);
-// }
-// for (var i = 0; i < completedTasksHolder.children.length; i++) {
-//   bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
-// }
-
 // $('#completed-tasks :checkbox').attr('checked', true);
 // $('#incomplete-tasks :checkbox').attr('checked', false);
