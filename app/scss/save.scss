@@ -1,0 +1,26 @@
+@import "helpers";
+
+
+.save {
+  width: auto;
+  font-size: 16px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $white;
+  position: relative;
+  top: -46px;
+  padding: 12px;
+  border-radius: 0 0 5px 5px;
+  background-color: $red;
+  box-shadow: 1px 1px 2px 0 $gray;
+   transition-property: color, background-color;
+  transition: .3s ease-in-out;
+}
+
+.save:hover,
+.save:focus,
+.save:active {
+  background-color: $violet;
+  color: $white;
+}

@@ -1,1 +1,41 @@
 @import "helpers";
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: $semi-transparent;
+}
+
+.alert {
+  margin: 200px auto;
+  padding: 10px;
+  text-align: center;
+  width: 250px;
+  height: 100px;
+  background: $white;
+  border-radius: 5px;
+  border: 3px solid $red;
+}
+
+.alert__button {
+  height: 25px;
+  width: 50px;
+  border-radius: 3px;
+}
+
+.alert__button--yes:hover {
+  color: $white;
+  background-color: $red;
+}
+
+.alert__button--no {
+  margin-left: 10px;
+  margin-right: 70px;
+  &:hover {
+    color: $white;
+    background-color: $green;
+  }
+}

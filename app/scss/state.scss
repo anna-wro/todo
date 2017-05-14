@@ -1,0 +1,30 @@
+@import "helpers";
+
+.is-expanded {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: 11px;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.is-done {
+  text-decoration: line-through;
+  color: $gray;
+}
+
+.is-editing {
+  & .task__input {
+    display: block;
+  }
+
+  & .task__title {
+    display: none;
+    margin-top: 1px;
+    margin-bottom: 4px;
+    padding: 8px 0 9px 11px;
+  }
+}

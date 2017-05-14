@@ -1,0 +1,27 @@
+@import "helpers";
+
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+
+body {
+  background: $green;
+  background: linear-gradient(to left, $green, $green-darker);
+  font-family: Lato, sans-serif;
+}
+
+.container {
+  display: block;
+  width: 400px;
+  margin: 50px auto;
+  padding: 39px 40px 60px 40px;
+  background-color: $white;
+  border-radius: 5px;
+  box-shadow: 7px 7px 10px 0  $gray;
+}
+
+.todo__done {
+  padding-top: 18px;
+  z-index: 0;
+}
