@@ -115,8 +115,8 @@ const confirmDialogue = function (buttonClicked) {
   let alertContainer = document.createElement('div');
   alertContainer.className = 'alert';
   noButton.textContent = 'No';
-  noButton.setAttribute('class', 'alert__button alert__button--no');
-  yesButton.setAttribute('class', 'alert__button alert__button--yes');
+  noButton.setAttribute('class', 'button alert__button alert__button--no');
+  yesButton.setAttribute('class', 'button alert__button alert__button--yes');
   yesButton.textContent = 'Yes';
   alertContainer.innerHTML = '<p>Delete this item?</p>';
   alertContainer.appendChild(noButton);
