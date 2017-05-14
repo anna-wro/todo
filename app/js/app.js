@@ -4,7 +4,6 @@ const body = document.body;
 const labelAdd = document.getElementById('js-label-add');
 const taskInput = document.getElementById('js-new-task');
 const buttonAdd = document.getElementById('js-add-button');
-const accordion = document.getElementsByClassName('is-expanded');
 const todoList = document.getElementById('js-incomplete-tasks');
 const todoHeader = document.getElementById('js-todo');
 const doneList = document.getElementById('js-completed-tasks');
@@ -45,7 +44,7 @@ const createNewTask = (taskTitle) => {
   checkBox.type = 'checkbox';
   checkBox.className = 'task__checkbox';
   editInput.type = 'text';
-  editInput.className = 'task__input';
+  editInput.className = 'text-input task__input';
   label.textContent = taskTitle;
   label.className = 'task__title';
   listItem.appendChild(checkBox);
@@ -53,12 +52,12 @@ const createNewTask = (taskTitle) => {
   listItem.appendChild(editInput);
   iconDelete.className = 'material-icons icon__delete';
   iconDelete.textContent = 'delete';
-  deleteButton.className = 'task__delete';
+  deleteButton.className = 'button task__delete';
   deleteButton.appendChild(iconDelete);
   listItem.appendChild(deleteButton);
   iconEdit.className = 'material-icons icon__edit';
   iconEdit.textContent = 'mode_edit';
-  editButton.className = 'task__edit';
+  editButton.className = 'button task__edit';
   editButton.appendChild(iconEdit);
   listItem.appendChild(editButton);
   return listItem;
@@ -161,33 +160,9 @@ const whatToDo = (e) => {
 todoList.addEventListener('click', whatToDo);
 doneList.addEventListener('click', whatToDo);
 // Accordion
-todoHeader.addEventListener('click', () => {
-  let isHidden = todoList.classList.contains('is-hidden');
-  if (isHidden) {
-    accordion[1].innerText = 'expand_less';
-  } else {
-    accordion[1].innerText = 'expand_more';
-  }
-
-  todoList.classList.toggle('is-hidden');
-});
-doneHeader.addEventListener('click', () => {
-  let isHidden = doneList.classList.contains('is-hidden');
-  if (isHidden) {
-    accordion[2].innerText = 'expand_less';
-  } else {
-    accordion[2].innerText = 'expand_more';
-  }
-
-  doneList.classList.toggle('is-hidden');
-});
+todoHeader.addEventListener('click', () => todoList.classList.toggle('is-hidden'));
+doneHeader.addEventListener('click', () => doneList.classList.toggle('is-hidden'));
 labelAdd.addEventListener('click', () => {
-  let isHidden = buttonAdd.classList.contains('is-hidden');
-  if (isHidden) {
-    accordion[0].innerText = 'expand_less';
-  } else {
-    accordion[0].innerText = 'expand_more';
-  }
   buttonAdd.classList.toggle('is-hidden');
   taskInput.classList.toggle('is-hidden');
 });

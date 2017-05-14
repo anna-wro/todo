@@ -14,59 +14,59 @@
 </head>
 <body>
 <div class="container">
-    <button id="js-save" class="save">Save</button>
+    <button id="js-save" class="button save">Save</button>
     <section class="todo__add">
         <div class="todo__title-wrap" id="js-label-add">
-            <label for="js-new-task" class="section__title">Add Item</label><i class="material-icons is-expanded">expand_less</i>
+            <label for="js-new-task" class="section__title section__title--add">Add Item</label>
         </div>
-        <input id="js-new-task" class="task__input--new" type="text">
-        <button id="js-add-button"><i class="material-icons icon__add">add_circle</i></button>
+        <input id="js-new-task" class="text-input task__input--new" type="text">
+        <button id="js-add-button" class="button"><i class="material-icons icon__add">add_circle</i></button>
     </section>
     <section class="todo__list">
-        <div class="todo__title-wrap" id="js-todo">
-            <h3 class="section__title">To-do</h3><i class="material-icons is-expanded">expand_less</i>
+        <div class="todo__title-wrap todo__title-wrap--todo" id="js-todo">
+            <h3 class="section__title">To-do</h3>
         </div>
         <ul id="js-incomplete-tasks" class="list">
             <li class="task">
                 <input type="checkbox" class="task__checkbox">
                 <label class="task__title">Enjoy!</label>
-                <input type="text" class="task__input">
-                <button class="task__delete"><i class="material-icons icon__delete">delete</i></button>
-                <button class="task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
+                <input type="text" class="text-input task__input">
+                <button class="button task__delete"><i class="material-icons icon__delete">delete</i></button>
+                <button class="button task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
             </li>
         </ul>
     </section>
     <section class="todo__done">
         <div class="todo__title-wrap" id="js-completed">
-            <h3 class="section__title">Completed</h3><i class="material-icons is-expanded">expand_less</i></div>
+            <h3 class="section__title">Completed</h3></div>
         <ul id="js-completed-tasks" class="list">
             <li class="task">
                 <input type="checkbox" class="task__checkbox" checked>
                 <label class="task__title is-done">Local storage</label>
-                <input type="text" class="task__input">
-                <button class="task__delete"><i class="material-icons icon__delete">delete</i></button>
-                <button class="task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
+                <input type="text" class="text-input task__input">
+                <button class="button task__delete"><i class="material-icons icon__delete">delete</i></button>
+                <button class="button task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
             </li>
             <li class="task">
                 <input type="checkbox" class="task__checkbox" checked>
                 <label class="task__title is-done">Adding new tasks</label>
-                <input type="text" class="task__input">
-                <button class="task__delete"><i class="material-icons icon__delete">delete</i></button>
-                <button class="task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
+                <input type="text" class="text-input task__input">
+                <button class="button task__delete"><i class="material-icons icon__delete">delete</i></button>
+                <button class="button task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
             </li>
             <li class="task">
                 <input type="checkbox" class="task__checkbox" checked>
                 <label class="task__title is-done">Editing tasks</label>
-                <input type="text" class="task__input">
-                <button class="task__delete"><i class="material-icons icon__delete">delete</i></button>
-                <button class="task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
+                <input type="text" class="text-input task__input">
+                <button class="button task__delete"><i class="material-icons icon__delete">delete</i></button>
+                <button class="button task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
             </li>
             <li class="task">
                 <input type="checkbox" class="task__checkbox" checked>
                 <label class="task__title is-done">Deleting tasks</label>
-                <input type="text" class="task__input">
-                <button class="task__delete"><i class="material-icons icon__delete">delete</i></button>
-                <button class="task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
+                <input type="text" class="text-input task__input">
+                <button class="button task__delete"><i class="material-icons icon__delete">delete</i></button>
+                <button class="button task__edit"><i class="material-icons icon__edit">mode_edit</i></button>
             </li>
         </ul>
     </section>
