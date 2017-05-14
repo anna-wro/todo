@@ -4,7 +4,6 @@
 
 Simple [to-do app](http://anna.pm/todo) that allows users to keep track of tasks. All changes can be saved in localStorage.
 
-Speaking of changes, I want to:
+Rewritten in vanilla JavaScript.
 
-* create version with vanilla JS
-* make it responsive
+You can also see previous version (with jQuery).
