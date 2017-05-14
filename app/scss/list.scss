@@ -11,6 +11,11 @@
   cursor: pointer;
 }
 
+.section__title--add {
+  display: block;
+  margin: 0 0 20px;
+}
+
 .task__title, .task__checkbox {
   cursor: pointer;
 }
@@ -36,4 +41,33 @@
 
 .task__input {
   width: 285px;
+}
+
+.task__input--new {
+  float: left;
+  width: 345px;
+  &:focus {
+    border-color: $border;
+  }
+}
+
+.text-input {
+  margin: 0;
+  font-size: 16px;
+  line-height: 16px;
+  height: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: $white;
+  border-radius: 6px;
+  font-family: Lato, sans-serif;
+  color: $gray2;
+}
+
+.text-input:focus {
+  color: $black;
+}
+
+.todo__title-wrap--todo {
+  margin-bottom: 10px;
 }

@@ -1,5 +1,9 @@
 @import "helpers";
 
+.material-icons {
+  font-size: 22px;
+}
+
 .task__delete:hover {
   color: $red;
 }

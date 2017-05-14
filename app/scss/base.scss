@@ -11,6 +11,26 @@ body {
   font-family: Lato, sans-serif;
 }
 
+input,
+button {
+  outline: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li * {
+  float: left;
+}
+
+li,
+h3 {
+  clear: both;
+  list-style: none;
+}
+
 .container {
   display: block;
   width: 400px;
@@ -24,4 +44,18 @@ body {
 .todo__done {
   padding-top: 18px;
   z-index: 0;
+}
+
+.button {
+  background: none;
+  border: 0;
+  color: $gray2;
+  float: right;
+  width: 25px;
+  margin: 7px 0 0 0;
+  padding: 0;
+  cursor: pointer;
+  &:hover {
+    color: $black;
+  }
 }
